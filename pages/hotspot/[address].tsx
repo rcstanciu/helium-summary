@@ -14,7 +14,7 @@ interface Props {
   address: string;
 }
 
-const Hotspot = ({ address }: Props): React.FunctionComponent<Props> => {
+const Hotspot = ({ address }: Props): JSX.Element => {
   const [dates, setDates] = useState<Array<Array<Date>>>([
     [sub(new Date(), { months: 1 }), new Date()],
   ]);

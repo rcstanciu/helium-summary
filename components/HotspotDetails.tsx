@@ -6,7 +6,7 @@ interface Props {
   address: string;
 }
 
-const HotspotDetails = ({ address }: Props): React.FunctionComponent<Props> => {
+const HotspotDetails = ({ address }: Props): JSX.Element => {
 
 
   const { data } = useGetHotspot({ address });

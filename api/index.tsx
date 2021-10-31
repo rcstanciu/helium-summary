@@ -13,7 +13,7 @@ export const getHotspotRewardTotal = ({
   address: string;
   startDate: Date;
   endDate: Date;
-}): AxiosResponse =>
+}) =>
   instance.get(`hotspots/${address}/rewards/sum`, {
     params: {
       min_time: startDate.toISOString(),
@@ -21,5 +21,5 @@ export const getHotspotRewardTotal = ({
     },
   });
 
-export const getHotspot = ({ address }: { address: string }): AxiosResponse =>
+export const getHotspot = ({ address }: { address: string }) =>
   instance.get(`hotspots/${address}`);

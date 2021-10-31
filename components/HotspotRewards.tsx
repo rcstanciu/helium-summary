@@ -14,7 +14,7 @@ const HotspotRewards = ({
   address,
   startDate,
   endDate,
-}: Props): React.FunctionComponent<Props> => {
+}: Props): JSX.Element => {
 
 
   const { data, status, isSuccess } = useGetHotspotRewardTotal({
