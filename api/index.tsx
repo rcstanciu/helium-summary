@@ -23,3 +23,16 @@ export const getHotspotRewardTotal = ({
 
 export const getHotspot = ({ address }: { address: string }) =>
   instance.get(`hotspots/${address}`);
+
+export const getAccount = ({ address }: { address: string }) =>
+  instance.get(`accounts/${address}`);
+
+export const getAccountHotspots = ({ address }: { address: string }) =>
+  instance.get(`accounts/${address}/hotspots`);
+
+export const searchHotspotByName = ({ name }: { name: string }) =>
+  instance.get("/hotspots/name", {
+    params: {
+      search: name,
+    },
+  });

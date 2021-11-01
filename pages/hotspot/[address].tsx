@@ -10,27 +10,37 @@ import HotspotDetails from "../../components/HotspotDetails";
 import Container from "../../components/Container";
 import HotspotRewards from "../../components/HotspotRewards";
 import Head from "next/head";
+import { getMonthInterval } from "../../utils/date";
+
 interface Props {
   address: string;
 }
 
 const Hotspot = ({ address }: Props): JSX.Element => {
   const [dates, setDates] = useState<Array<Array<Date>>>([
-    [sub(new Date(), { months: 1 }), new Date()],
+    [getMonthInterval().start, getMonthInterval().end],
   ]);
 
   const viewMore = useCallback(() => {
-    const lastDate = dates[0];
-
-    setDates([[sub(lastDate[0], { months: 1 }), lastDate[0]], ...dates]);
+    const lastDate = dates[0][0];
+    const newDateInterval = getMonthInterval(sub(lastDate, { days: 1 }));
+    setDates([[newDateInterval.start, newDateInterval.end], ...dates]);
   }, [dates]);
 
   return (
     <Container>
       <Head>
-        <title>{address} - Helium Hotspot Summary</title>
+        <title>Hotspot: {address} - Helium Hotspot Summary</title>
       </Head>
       <HotspotDetails address={address} />
+      <div className="flex items-center justify-center mb-12">
+        <button
+          onClick={viewMore}
+          className="bg-blue-500 text-gray-100 py-2 px-4 rounded-md"
+        >
+          Previous month
+        </button>
+      </div>
       {dates.map((entry, index) => (
         <HotspotRewards
           key={index}
@@ -39,14 +49,6 @@ const Hotspot = ({ address }: Props): JSX.Element => {
           endDate={entry[1]}
         />
       ))}
-      <div className="flex items-center justify-center my-12">
-        <button
-          onClick={viewMore}
-          className="bg-blue-400 text-gray-100 py-2 px-4 rounded-md"
-        >
-          +1 month
-        </button>
-      </div>
     </Container>
   );
 };
