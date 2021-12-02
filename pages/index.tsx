@@ -23,22 +23,17 @@ export default function Home() {
       <Head>
         <title>Helium Hotspot Summary</title>
       </Head>
-      <label
-        for="company-website"
-        class="block text-sm font-medium text-gray-500 mt-12"
-      >
-        Search hotspot by name
-      </label>
-      <div class="mt-1 flex rounded-md shadow-sm mb-12">
-        <input
-          type="text"
-          name="company-website"
-          id="company-website"
-          class="py-2 px-2 rounded-md bg-gray-400 flex-1 block w-full text-gray-100 text-lg placeholder-gray-300"
-          placeholder="Mean Pink Poodle"
-          value={query}
-          onChange={handleQueryOnChange}
-        />
+      <div className="columns is-centered">
+        <div className="column is-6 has-text-centered">
+          <p className="has-text-grey-light mb-4">search hotspots by name</p>
+          <input
+            type="text"
+            placeholder="mean pink poodle"
+            value={query}
+            onChange={handleQueryOnChange}
+            className="mb-4"
+          />
+        </div>
       </div>
       {data?.data?.data.map((hotspot, index) => (
         <HotspotSearchResult

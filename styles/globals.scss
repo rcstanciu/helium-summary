@@ -1,0 +1,75 @@
+@import "https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css";
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;600;700&display=swap");
+
+html,
+body {
+  background-color: hsl(0, 0%, 21%);
+}
+
+* {
+  font-family: "Roboto Mono", monospace !important;
+}
+
+a {
+  color: unset;
+
+  &:hover,
+  &:active,
+  &:focus {
+    color: #fff;
+  }
+
+  &:hover:not(.no-decoration),
+  &:active:not(.no-decoration),
+  &:focus :not(.no-decoration) {
+    text-decoration: underline;
+  }
+}
+
+input {
+  background-color: transparent;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-radius: 0;
+  border-bottom: 1px solid hsl(0, 0%, 48%);
+  overflow: hidden;
+  color: hsl(0, 0%, 86%);
+  font-size: 1rem;
+  width: 100%;
+  text-align: center;
+
+  &::placeholder {
+    color: hsl(0, 0%, 48%);
+  }
+
+  &:active,
+  &:hover,
+  &:focus,
+  &:focus-visible {
+    box-shadow: unset;
+    border-color: hsl(0, 0%, 86%);
+    outline: none;
+  }
+}
+
+button {
+  background-color: transparent;
+  border: none;
+  color: hsl(0, 0%, 86%);
+
+  &:hover,
+  &:focus,
+  &:active {
+    cursor: pointer;
+    text-decoration: underline;
+    border: none;
+    box-shadow: none;
+  }
+}
+
+.ellipsis {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}

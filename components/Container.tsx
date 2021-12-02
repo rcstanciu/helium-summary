@@ -1,7 +1,7 @@
 import React from "react";
 
 const Container = ({ children }): JSX.Element => {
-  return <div className="container mx-auto px-24">{children}</div>;
+  return <div className="section pt-0 has-text-light">{children}</div>;
 };
 
 export default Container;

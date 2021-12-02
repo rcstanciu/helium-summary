@@ -4,7 +4,6 @@ import {
   useGetAccountHotspots,
   useGetHotspot,
 } from "../hooks/queries";
-import Card from "./Card";
 import Link from "next/link";
 import { ChevronRightIcon } from "@heroicons/react/solid";
 
@@ -20,37 +19,35 @@ const HotspotSearchResult = ({
   location,
 }: Props): JSX.Element => {
   return (
-    <div className="mb-8">
-      <Card>
-        <Link href={`/hotspot/${encodeURIComponent(address)}`}>
-          <a>
-            <div className="flex flex-row items-center">
-              <div className="flex-1">
-                <p className="text-xs text-gray-400">Name</p>
-                <p className="overflow-ellipsis overflow-hidden text-gray-50 mb-4">
-                  {name}
-                </p>
-                <p className="text-xs text-gray-400">Address</p>
-                <p className="overflow-ellipsis overflow-hidden text-gray-50 mb-4">
-                  {address}
-                </p>
-                {location && (
-                  <>
-                    <p className="text-xs text-gray-400">Location</p>
-                    <p className="overflow-ellipsis overflow-hidden text-gray-50">
-                      {location}
-                    </p>
-                  </>
-                )}
-              </div>
-              <div className="flex-0">
-                <ChevronRightIcon className="h-8 w-8 text-gray-500" />
-              </div>
-            </div>
-          </a>
-        </Link>
-      </Card>
-    </div>
+    <Link href={`/hotspot/${encodeURIComponent(address)}`}>
+      <a className="no-decoration">
+        <div className="columns is-vcentered">
+          <div className="column is-3">
+            <p className="is-size-6 has-text-grey-light">name</p>
+            <p className="is-size-6 mb-2 ellipsis">{name}</p>
+          </div>
+          <div className="column is-3">
+            <p className="is-size-6 has-text-grey-light">address</p>
+            <p className="is-size-6 mb-2 ellipsis">{address}</p>
+          </div>
+          <div className="column is-5">
+            {location && (
+              <>
+                <p className="is-size-6 has-text-grey-light">location</p>
+                <p className="is-size-6 mb-2 ellipsis">{location}</p>
+              </>
+            )}
+          </div>
+          <div className="column is-narrow is-hidden-mobile">
+            <ChevronRightIcon
+              height={30}
+              width={30}
+              className="has-text-grey"
+            />
+          </div>
+        </div>
+      </a>
+    </Link>
   );
 };
 
